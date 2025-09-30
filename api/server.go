@@ -6,14 +6,16 @@ import (
 	"task/game"
 )
 
+// api server structure
 type APIServer struct {
 	Game *game.GameEngine
 }
 
+// submit handler
 func (s *APIServer) SubmitHandler(w http.ResponseWriter, r *http.Request) {
 	var resp game.UserResponse
 	if err := json.NewDecoder(r.Body).Decode(&resp); err != nil {
-		http.Error(w, "bad request", http.StatusBadRequest)
+		http.Error(w, "internal server error", http.StatusInternalServerError)
 		return
 	}
 	s.Game.Notify <- resp

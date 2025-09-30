@@ -23,6 +23,6 @@ func main() {
 	mockuser.SimulateUsers(1000, "http://localhost:8080")
 
 	uid, cor, incor := engine.Metrics()
-	fmt.Printf("Winner: %d | Correct: %d | Incorrect: %d\n", uid, cor, incor)
+	fmt.Printf("Winner's User Id: %d | Correct Answer Count: %d | Incorrect Answer Count: %d\n", uid, cor, incor)
 	engine.Close()
 }
